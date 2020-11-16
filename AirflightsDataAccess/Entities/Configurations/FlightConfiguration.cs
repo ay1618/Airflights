@@ -19,6 +19,9 @@ namespace AirflightsDataAccess.Entities.Configurations
             builder.Property(x => x.DepartureTime).IsRequired();
             builder.Property(x => x.Created).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
+
+            builder.HasOne(f => f.ToCity).WithMany(c => c.IncomingFlights).HasForeignKey(f => f.ToCityId).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(f => f.FromCity).WithMany(c => c.OutgoingFlights).HasForeignKey(f => f.FromCityId).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
