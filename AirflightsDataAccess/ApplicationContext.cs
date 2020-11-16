@@ -24,8 +24,10 @@ namespace AirflightsDataAccess
         {
             //base.OnModelCreating(mBuilder);
             mBuilder.ApplyConfiguration(new FlightConfiguration());
+            mBuilder.ApplyConfiguration(new CityConfiguration());
         }
 
         public DbSet<Flight> Flights { get; set; }
+        public DbSet<City> Cities { get; set; }
     }
 }
