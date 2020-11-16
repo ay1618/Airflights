@@ -29,5 +29,6 @@ namespace AirflightsDataAccess
 
         public DbSet<Flight> Flights { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
