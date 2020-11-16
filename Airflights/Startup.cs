@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AirflightsDataAccess.ExtensionMethods;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,8 @@ namespace Airflights
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDataAccessLayer(Configuration["Db:ConnectionString"]);
 
             services.AddSwaggerGen();
             services.ConfigureSwaggerGen(options =>
