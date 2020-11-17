@@ -4,6 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AirflightsDataAccess.ExtensionMethods;
+using AirflightsDataAccess.Repositories;
+using AirflightsDomain;
+using AirflightsDomain.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +35,13 @@ namespace Airflights
             services.AddControllers();
 
             services.AddDataAccessLayer(Configuration["Db:ConnectionString"]);
+            services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.FlightProfile));
+            services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.DictProfile));
+
+            services.AddScoped<FlightsService>();
+            services.AddScoped<DictService>();
+            services.AddScoped<IFlightsRepository, FlightsSqlRepository>();
+            services.AddScoped<IDictRepository, DictSqlRepository>();
 
             services.AddSwaggerGen();
             services.ConfigureSwaggerGen(options =>
