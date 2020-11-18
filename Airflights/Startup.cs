@@ -2,13 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using AirflightsDataAccess;
 using AirflightsDataAccess.ExtensionMethods;
 using AirflightsDataAccess.Repositories;
 using AirflightsDomain;
 using AirflightsDomain.Services;
 using AirflightsDomain.Services.Implementations;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,6 +21,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Airflights
 {
@@ -35,15 +39,17 @@ namespace Airflights
         {
             services.AddControllers();
 
-            services.AddDataAccessLayer(Configuration["Db:ConnectionString"]);
+            services.AddDataAccessContext(Configuration["Db:ConnectionString"]);
             services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.FlightProfile));
             services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.DictProfile));
+            services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.UserProfile));
 
-            services.AddScoped<IFlightsService, FlightsService>();
-            services.AddScoped<IDictService, DictService>();
-            services.AddScoped<IFlightsRepository, FlightsSqlRepository>();
-            services.AddScoped<IDictRepository, DictSqlRepository>();
+            //add injections from Domain 
+            services.AddDomainInjections();
 
+            //add injection from DataAccess
+            services.AddDataAccessInjections();
+            
             services.AddSwaggerGen();
             services.ConfigureSwaggerGen(options =>
             {
@@ -63,6 +69,25 @@ namespace Airflights
                 var xmlPath = Path.Combine(basePath, "Airflights.xml");
                 options.IncludeXmlComments(xmlPath);
             });
+
+            var key = Encoding.ASCII.GetBytes(Configuration["authSettings:Secret"]);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +101,13 @@ namespace Airflights
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
