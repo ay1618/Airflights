@@ -1,4 +1,5 @@
 ﻿using AirflightsDomain.Models.Flight;
+using AirflightsDomain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
