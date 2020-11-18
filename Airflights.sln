@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airflights", "Airflights\Airflights.csproj", "{15AC32AB-6F2C-4124-945F-52D83E4D4FB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airflights", "Airflights\Airflights.csproj", "{15AC32AB-6F2C-4124-945F-52D83E4D4FB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{29A7456A-3044-4D05-A31B-EB6B95682DFA}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirflightsDomain", "AirflightsDomain\AirflightsDomain.csproj", "{68DEA7BE-EB33-4370-B0E4-5EE036CD0C1F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirflightsDataAccess", "AirflightsDataAccess\AirflightsDataAccess.csproj", "{E5B4AEC8-23CD-4539-8C92-C9433CB2D8CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirflightsShared", "AirflightsShared\AirflightsShared.csproj", "{ADF27A8A-02E7-4F58-8511-F42D3229D20C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +26,18 @@ Global
 		{15AC32AB-6F2C-4124-945F-52D83E4D4FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15AC32AB-6F2C-4124-945F-52D83E4D4FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15AC32AB-6F2C-4124-945F-52D83E4D4FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DEA7BE-EB33-4370-B0E4-5EE036CD0C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DEA7BE-EB33-4370-B0E4-5EE036CD0C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DEA7BE-EB33-4370-B0E4-5EE036CD0C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DEA7BE-EB33-4370-B0E4-5EE036CD0C1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5B4AEC8-23CD-4539-8C92-C9433CB2D8CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5B4AEC8-23CD-4539-8C92-C9433CB2D8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5B4AEC8-23CD-4539-8C92-C9433CB2D8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5B4AEC8-23CD-4539-8C92-C9433CB2D8CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF27A8A-02E7-4F58-8511-F42D3229D20C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF27A8A-02E7-4F58-8511-F42D3229D20C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF27A8A-02E7-4F58-8511-F42D3229D20C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF27A8A-02E7-4F58-8511-F42D3229D20C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

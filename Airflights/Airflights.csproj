@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AirflightsDataAccess\AirflightsDataAccess.csproj" />
+    <ProjectReference Include="..\AirflightsShared\AirflightsShared.csproj" />
   </ItemGroup>
 
 
