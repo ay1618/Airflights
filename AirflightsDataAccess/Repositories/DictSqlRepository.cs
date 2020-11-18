@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AirflightsDataAccess.Repositories
 {
-    public class DictSqlRepository : AirflightsDomain.IDictRepository
+    public class DictSqlRepository : AirflightsDomain.Repositories.IDictRepository
     {
         private readonly ApplicationContext _dbContext;
         private readonly IMapper _mapper;

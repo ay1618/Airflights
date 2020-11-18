@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AirflightsDataAccess.Repositories
 {
-    public class FlightsSqlRepository : AirflightsDomain.IFlightsRepository
+    public class FlightsSqlRepository : AirflightsDomain.Repositories.IFlightsRepository
     {
         private readonly ApplicationContext _dbContext;
         private readonly IMapper _mapper;
