@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirflightsDomain.Services
+namespace AirflightsDomain.Services.Implementations
 {
-    public class FlightsService
+    public class FlightsService : IFlightsService
     {
         private readonly IFlightsRepository _flightsRepository;
 
@@ -16,6 +16,6 @@ namespace AirflightsDomain.Services
             this._flightsRepository = flightsRepository;
         }
 
-        public async Task<List<FlightDTO>> GetAll() => (await _flightsRepository.GetAsync()).ToList();
+        public async Task<List<FlightDTO>> GetAllAsync() => (await _flightsRepository.GetAsync()).ToList();
     }
 }

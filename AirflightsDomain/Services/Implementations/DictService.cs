@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirflightsDomain.Services
+namespace AirflightsDomain.Services.Implementations
 {
-    public class DictService
+    public class DictService : IDictService
     {
         private readonly IDictRepository _dictRepository;
 
@@ -16,6 +16,6 @@ namespace AirflightsDomain.Services
             this._dictRepository = dictRepository;
         }
 
-        public async Task<List<CityDTO>> GetAll() => (await _dictRepository.GetAsync()).ToList();
+        public async Task<List<CityDTO>> GetAllAsync() => (await _dictRepository.GetAsync()).ToList();
     }
 }

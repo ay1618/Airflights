@@ -17,13 +17,13 @@ namespace Airflights.Controllers
     [ApiController]
     public class FlightsController : ControllerBase
     {
-        private readonly FlightsService _flightService;
+        private readonly IFlightsService _flightService;
 
         /// <summary>
         /// конструктор - точка входа внедрения сервисов
         /// </summary>
         /// <param name="flightsService">сервис для рейсов</param>
-        public FlightsController(FlightsService flightsService)
+        public FlightsController(IFlightsService flightsService)
         {
             this._flightService = flightsService;
         }
@@ -36,7 +36,7 @@ namespace Airflights.Controllers
         [HttpGet]
         public async Task<IEnumerable<FlightDTO>> Get()
         {
-            return await _flightService.GetAll();
+            return await _flightService.GetAllAsync();
         }
 
         /// <summary>

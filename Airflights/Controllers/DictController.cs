@@ -11,19 +11,19 @@ namespace Airflights.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DictController : ControllerBase
+    public class DictController : _BaseController //ControllerBase
     {
-        private readonly DictService _dictService;
+        private readonly IDictService _dictService;
 
-        public DictController(DictService dictService)
+        public DictController(IDictService dictService)
         {
             this._dictService = dictService;
         }
 
         [HttpGet("cities")]
-        public async Task<List<CityDTO>> Cities()
+        public async Task<ActionResult<List<CityDTO>>> Cities()
         {
-            return await _dictService.GetAll();
+            return Ok(await _dictService.GetAllAsync());
         }
         
     }

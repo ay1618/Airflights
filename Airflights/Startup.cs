@@ -7,6 +7,7 @@ using AirflightsDataAccess.ExtensionMethods;
 using AirflightsDataAccess.Repositories;
 using AirflightsDomain;
 using AirflightsDomain.Services;
+using AirflightsDomain.Services.Implementations;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,8 +39,8 @@ namespace Airflights
             services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.FlightProfile));
             services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.DictProfile));
 
-            services.AddScoped<FlightsService>();
-            services.AddScoped<DictService>();
+            services.AddScoped<IFlightsService, FlightsService>();
+            services.AddScoped<IDictService, DictService>();
             services.AddScoped<IFlightsRepository, FlightsSqlRepository>();
             services.AddScoped<IDictRepository, DictSqlRepository>();
 
