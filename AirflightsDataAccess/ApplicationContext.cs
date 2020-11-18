@@ -26,10 +26,13 @@ namespace AirflightsDataAccess
             mBuilder.ApplyConfiguration(new FlightConfiguration());
             mBuilder.ApplyConfiguration(new CityConfiguration());
             mBuilder.ApplyConfiguration(new UserConfiguration());
+            mBuilder.ApplyConfiguration(new RoleConfiguration());
+            mBuilder.ApplyConfiguration(new UserRoleConfiguration());
         }
 
         public DbSet<Flight> Flights { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }

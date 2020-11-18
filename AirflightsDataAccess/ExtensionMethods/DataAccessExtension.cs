@@ -8,7 +8,7 @@ namespace AirflightsDataAccess.ExtensionMethods
 {
     public static class DataAccessExtension
     {
-        public static IServiceCollection AddDataAccessLayer(this IServiceCollection services, string connectionString)
+        public static IServiceCollection AddDataAccessContext(this IServiceCollection services, string connectionString)
         {
             return services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
         }
