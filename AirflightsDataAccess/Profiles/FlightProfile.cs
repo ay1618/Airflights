@@ -11,6 +11,7 @@ namespace AirflightsDataAccess.Profiles
     {
         public FlightProfile() {
             CreateMap<Flight, FlightDTO>();
+            CreateMap<CreateFlightDTO, Flight>();
         }
     }
 }

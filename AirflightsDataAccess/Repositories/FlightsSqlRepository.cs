@@ -2,6 +2,7 @@
 using AirflightsDomain.Models;
 using AirflightsDomain.Models.Flight;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,13 @@ namespace AirflightsDataAccess.Repositories
     {
         private readonly ApplicationContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public FlightsSqlRepository(ApplicationContext dbContext, IMapper mapper)
+        public FlightsSqlRepository(ApplicationContext dbContext, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this._dbContext = dbContext;
             this._mapper = mapper;
+            this._httpContextAccessor = httpContextAccessor;
         }
 
         public Task AddDelayAsync(int flightId, TimeSpan delay)
@@ -26,9 +29,18 @@ namespace AirflightsDataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<int> CreateAsync(CreateFlightDTO flight)
+        public async Task CreateAsync(CreateFlightDTO flight)
         {
-            throw new NotImplementedException();
+            Flight newFlight = _mapper.Map<Flight>(flight);
+            newFlight.Created = DateTime.Now;
+
+            newFlight.UserId = (await _dbContext.Users
+                .FirstOrDefaultAsync(
+                    u => u.Login == _httpContextAccessor.HttpContext.User.Identity.Name
+                 )).Id;
+
+            await _dbContext.AddAsync(newFlight);
+            await _dbContext.SaveChangesAsync();
         }
 
         public Task DeleteAsync(int flightId)

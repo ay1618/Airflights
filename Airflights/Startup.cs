@@ -49,7 +49,9 @@ namespace Airflights
 
             //add injection from DataAccess
             services.AddDataAccessInjections();
-            
+
+            services.AddHttpContextAccessor();
+
             services.AddSwaggerGen();
             services.ConfigureSwaggerGen(options =>
             {

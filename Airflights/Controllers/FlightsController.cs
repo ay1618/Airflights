@@ -1,4 +1,5 @@
-﻿using AirflightsDomain.Models.Flight;
+﻿using AirflightsDomain.Models;
+using AirflightsDomain.Models.Flight;
 using AirflightsDomain.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,7 +16,7 @@ namespace Airflights.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class FlightsController : ControllerBase
+    public class FlightsController : _BaseController//ControllerBase
     {
         private readonly IFlightsService _flightService;
 
@@ -34,7 +35,7 @@ namespace Airflights.Controllers
         /// <returns></returns>
         // GET: api/<FlightsController>
         [HttpGet]
-        public async Task<IEnumerable<FlightDTO>> Get()
+        public async Task<List<FlightDTO>> Get()
         {
             return await _flightService.GetAllAsync();
         }
@@ -46,27 +47,32 @@ namespace Airflights.Controllers
         /// <returns></returns>
         // GET api/<FlightsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<FlightDTO>> Get(int id)
         {
-            return "value";
+            return await _flightService.GetAsync(id);
         }
 
         // POST api/<FlightsController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
+
         }
 
-        // PUT api/<FlightsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT api/<FlightsController>
+        [HttpPut]
+        public async Task<ActionResult> Put([FromBody] CreateFlightDTO flight)
         {
+            await _flightService.CreateAsync(flight);
+            return Ok();
         }
 
         // DELETE api/<FlightsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+            await _flightService.DeleteAsync(id);
+            return Ok();
         }
     }
 }

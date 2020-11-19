@@ -27,7 +27,7 @@ namespace AirflightsDomain.Repositories
         /// </summary>
         /// <param name="flight"></param>
         /// <returns></returns>
-        Task<int> CreateAsync(CreateFlightDTO flight);
+        Task CreateAsync(CreateFlightDTO flight);
 
         Task UpdateAsync(UpdateFlightDTO flight);
 

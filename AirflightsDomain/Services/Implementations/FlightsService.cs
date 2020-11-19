@@ -17,21 +17,12 @@ namespace AirflightsDomain.Services.Implementations
             this._flightsRepository = flightsRepository;
         }
 
-        public Task CreateAsync(CreateFlightDTO flight)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task CreateAsync(CreateFlightDTO flight) => await _flightsRepository.CreateAsync(flight);
 
-        public Task DeleteAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task DeleteAsync(int id) => await _flightsRepository.DeleteAsync(id);
 
         public async Task<List<FlightDTO>> GetAllAsync() => (await _flightsRepository.GetAsync()).ToList();
 
-        public Task<FlightDTO> GetAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<FlightDTO> GetAsync(int id) => await _flightsRepository.GetAsync(id);
     }
 }
