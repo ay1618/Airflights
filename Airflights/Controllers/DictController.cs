@@ -1,5 +1,6 @@
 ﻿using AirflightsDomain.Models;
 using AirflightsDomain.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +21,7 @@ namespace Airflights.Controllers
             this._dictService = dictService;
         }
 
+        [Authorize]
         [HttpGet("cities")]
         public async Task<ActionResult<List<CityDTO>>> Cities()
         {

@@ -14,7 +14,7 @@ namespace AirflightsDataAccess.Profiles
         {
             CreateMap<UserDTO, User>();
             CreateMap<User, AuthUserDTO>()
-                .ForMember("Roles", opt => opt.MapFrom(c => String.Join(";", c.UserRoles.Select(r => r.Role.Code))));
+                .ForMember("Roles", opt => opt.MapFrom(c => c.UserRoles.Select(r => r.Role.Code)));
             CreateMap<CreateUserDTO, User>();
         }
     }

@@ -9,7 +9,7 @@ namespace AirflightsDomain.Repositories
 {
     public interface IUserRepository
     {
-        Task<UserDTO> GetAsync(string login, string password);
+        Task<AuthUserDTO> GetAuthAsync(string login);
 
         Task CreateAsync(CreateUserDTO user);
     }

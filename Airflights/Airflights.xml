@@ -1,32 +1,52 @@
 <?xml version="1.0"?>
 <doc>
-  <assembly>
-    <name>Airflights</name>
-  </assembly>
-  <members>
-    <member name="T:Airflights.Controllers.FlightsController">
-      <summary>
-        рейсы
-      </summary>
-    </member>
-    <member name="M:Airflights.Controllers.FlightsController.#ctor(AirflightsDomain.Services.IFlightsService)">
-      <summary>
-        конструктор - точка входа внедрения сервисов
-      </summary>
-      <param name="flightsService">сервис для рейсов</param>
-    </member>
-    <member name="M:Airflights.Controllers.FlightsController.Get">
-      <summary>
-        получить все рейсы
-      </summary>
-      <returns></returns>
-    </member>
-    <member name="M:Airflights.Controllers.FlightsController.Get(System.Int32)">
-      <summary>
-        получить рейс по id
-      </summary>
-      <param name="id"></param>
-      <returns></returns>
-    </member>
-  </members>
+    <assembly>
+        <name>Airflights</name>
+    </assembly>
+    <members>
+        <member name="M:Airflights.Controllers.AuthController.#ctor(AirflightsDomain.Services.IUserService,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            конструктор - точка входа внедрения сервисов
+            </summary>
+            <param name="usersService">сервис для пользователей</param>
+            <param name="config">для получение конфиг данных с appsettings</param>
+        </member>
+        <member name="T:Airflights.Controllers.FlightsController">
+            <summary>
+            рейсы
+            </summary>
+        </member>
+        <member name="M:Airflights.Controllers.FlightsController.#ctor(AirflightsDomain.Services.IFlightsService)">
+            <summary>
+            конструктор - точка входа внедрения сервисов
+            </summary>
+            <param name="flightsService">сервис для рейсов</param>
+        </member>
+        <member name="M:Airflights.Controllers.FlightsController.Get">
+            <summary>
+            получить все рейсы
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Airflights.Controllers.FlightsController.Get(System.Int32)">
+            <summary>
+            получить рейс по id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Airflights.Controllers.UsersController.#ctor(AirflightsDomain.Services.IUserService)">
+            <summary>
+            конструктор - точка входа внедрения сервисов
+            </summary>
+            <param name="usersService">сервис для пользователей</param>
+        </member>
+        <member name="M:Airflights.Controllers.UsersController.Put(AirflightsDomain.Models.User.CreateUserDTO)">
+            <summary>
+            создание нового пользователя
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+    </members>
 </doc>

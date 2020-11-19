@@ -14,6 +14,7 @@ namespace AirflightsDomain
         {
             services.AddScoped<IFlightsService, FlightsService>();
             services.AddScoped<IDictService, DictService>();
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }

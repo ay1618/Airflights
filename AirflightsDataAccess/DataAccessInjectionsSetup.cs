@@ -14,6 +14,7 @@ namespace AirflightsDataAccess
         {
             services.AddScoped<IFlightsRepository, FlightsSqlRepository>();
             services.AddScoped<IDictRepository, DictSqlRepository>();
+            services.AddScoped<IUserRepository, UserSqlRepository>();
         }
     }
 }
