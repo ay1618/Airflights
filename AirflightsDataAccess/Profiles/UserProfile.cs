@@ -3,6 +3,7 @@ using AirflightsDomain.Models.User;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AirflightsDataAccess.Profiles
@@ -12,7 +13,9 @@ namespace AirflightsDataAccess.Profiles
         public UserProfile()
         {
             CreateMap<UserDTO, User>();
-            CreateMap<User, UserDTO>();
+            CreateMap<User, AuthUserDTO>()
+                .ForMember("Roles", opt => opt.MapFrom(c => String.Join(";", c.UserRoles.Select(r => r.Role.Code))));
+            CreateMap<CreateUserDTO, User>();
         }
     }
 }
