@@ -7,7 +7,6 @@ namespace AirflightsDomain.Models.Entities
     public class Flight
     {
         public int Id { get; set; }
-        public string RegNum { get; set; }
         public DateTime ArrivalTime { get; set; }
         public DateTime DepartureTime { get; set; }
         public DateTime Created { get; set; }

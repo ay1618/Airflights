@@ -12,8 +12,6 @@ namespace AirflightsDataAccess.Entities.Configurations
         public void Configure(EntityTypeBuilder<Flight> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.RegNum).IsRequired().HasMaxLength(20);
-            builder.HasIndex(x => x.RegNum).IsUnique();
             builder.Property(x => x.FromCityId).IsRequired();
             builder.Property(x => x.ToCityId).IsRequired();
             builder.Property(x => x.ArrivalTime).IsRequired();
