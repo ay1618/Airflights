@@ -22,6 +22,9 @@ namespace AirflightsDomain.Services.Implementations
         public async Task<AuthUserDTO> GetIdentityAsync(string login, string password)
         {
             AuthUserDTO user = await _userRep.GetAuthAsync(login);
+            if (user is null)
+                return null;
+
             PasswordHasher<AuthUserDTO> passwordHasher = new PasswordHasher<AuthUserDTO>();
             PasswordVerificationResult verifyResult = passwordHasher.VerifyHashedPassword(user, user.Password, password);
 
