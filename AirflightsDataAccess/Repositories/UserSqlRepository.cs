@@ -1,7 +1,5 @@
-﻿using AirflightsDataAccess.Entities;
-using AirflightsDomain.Models.User;
+﻿using AirflightsDomain.Models.Entities;
 using AirflightsDomain.Repositories;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,28 +11,29 @@ namespace AirflightsDataAccess.Repositories
     public class UserSqlRepository : IUserRepository
     {
         private readonly ApplicationContext _applicationContext;
-        private readonly IMapper _mapper;
 
-        public UserSqlRepository(ApplicationContext context, IMapper mapper)
+        public UserSqlRepository(ApplicationContext context)
         {
             _applicationContext = context;
-            _mapper = mapper;
         }
 
-        public async Task CreateAsync(CreateUserDTO user)
+        public async Task CreateAsync(User user)
         {
-            User newUser = _mapper.Map<User>(user);
-            await _applicationContext.AddAsync<User>(newUser);
+            await _applicationContext.AddAsync<User>(user);
             await _applicationContext.SaveChangesAsync();
         }
 
-        public async Task<AuthUserDTO> GetAuthAsync(string login)
-        {
-            User user = await _applicationContext.Users
+        public async Task<User> GetAuthAsync(string login)
+            => await _applicationContext.Users
                 .Include(u => u.UserRoles)
                 .ThenInclude(ur => ur.Role)
                 .FirstOrDefaultAsync(u => u.Login == login);
-            return _mapper.Map<AuthUserDTO>(user);
-        }
+
+        public async Task<int> GetUserIdByLoginAsync(string login) 
+            => (await _applicationContext.Users
+                .FirstOrDefaultAsync(
+                    u => u.Login == login
+                 )).Id;
+
     }
 }

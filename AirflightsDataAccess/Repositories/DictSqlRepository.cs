@@ -1,5 +1,5 @@
-﻿using AirflightsDataAccess.Entities;
-using AirflightsDomain.Models;
+﻿using AirflightsDomain.Models;
+using AirflightsDomain.Models.Entities;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,10 +20,7 @@ namespace AirflightsDataAccess.Repositories
             this._mapper = mapper;
         }
 
-        public async Task<IEnumerable<CityDTO>> GetAsync()
-        {
-            IEnumerable<City> flights = await _dbContext.Cities.ToListAsync();
-            return _mapper.Map<IEnumerable<CityDTO>>(flights);
-        }
+        public async Task<List<City>> GetCitiesAsync() => await _dbContext.Cities.ToListAsync();
+          
     }
 }

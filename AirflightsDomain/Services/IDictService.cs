@@ -8,6 +8,6 @@ namespace AirflightsDomain.Services
 {
     public interface IDictService
     {
-        Task<List<CityDTO>> GetAllAsync();
+        Task<List<CityDTO>> GetCitiesAsync();
     }
 }

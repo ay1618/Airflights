@@ -1,9 +1,8 @@
-﻿using AirflightsDataAccess.Entities.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AirflightsDataAccess.Entities
+namespace AirflightsDomain.Models.Entities
 {
     public class User
     {

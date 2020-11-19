@@ -1,5 +1,6 @@
 ﻿using AirflightsDataAccess.Entities;
 using AirflightsDomain.Models;
+using AirflightsDomain.Models.Entities;
 using AirflightsDomain.Models.Flight;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -29,17 +30,9 @@ namespace AirflightsDataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task CreateAsync(CreateFlightDTO flight)
+        public async Task CreateAsync(Flight flight)
         {
-            Flight newFlight = _mapper.Map<Flight>(flight);
-            newFlight.Created = DateTime.Now;
-
-            newFlight.UserId = (await _dbContext.Users
-                .FirstOrDefaultAsync(
-                    u => u.Login == _httpContextAccessor.HttpContext.User.Identity.Name
-                 )).Id;
-
-            await _dbContext.AddAsync(newFlight);
+            await _dbContext.AddAsync(flight);
             await _dbContext.SaveChangesAsync();
         }
 
@@ -48,11 +41,7 @@ namespace AirflightsDataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<FlightDTO>> GetAsync()
-        {
-            IEnumerable<Flight> flights = await _dbContext.Flights.ToListAsync();
-            return _mapper.Map<IEnumerable<FlightDTO>>(flights);
-        }
+        public async Task<List<Flight>> GetAsync() => await _dbContext.Flights.ToListAsync();
 
         public Task<FlightDTO> GetAsync(int id)
         {

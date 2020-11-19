@@ -1,4 +1,5 @@
 ﻿using AirflightsDomain.Models;
+using AirflightsDomain.Models.Entities;
 using AirflightsDomain.Models.Flight;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace AirflightsDomain.Repositories
         /// вытащить все
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<FlightDTO>> GetAsync();
+        Task<List<Flight>> GetAsync();
 
         /// <summary>
         /// вытащить по id
@@ -27,7 +28,7 @@ namespace AirflightsDomain.Repositories
         /// </summary>
         /// <param name="flight"></param>
         /// <returns></returns>
-        Task CreateAsync(CreateFlightDTO flight);
+        Task CreateAsync(Flight flight);
 
         Task UpdateAsync(UpdateFlightDTO flight);
 

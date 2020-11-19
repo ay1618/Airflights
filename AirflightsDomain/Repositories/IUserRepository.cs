@@ -1,4 +1,5 @@
 ﻿using AirflightsDomain.Models;
+using AirflightsDomain.Models.Entities;
 using AirflightsDomain.Models.User;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,10 @@ namespace AirflightsDomain.Repositories
 {
     public interface IUserRepository
     {
-        Task<AuthUserDTO> GetAuthAsync(string login);
+        Task<User> GetAuthAsync(string login);
 
-        Task CreateAsync(CreateUserDTO user);
+        Task CreateAsync(User user);
+
+        Task<int> GetUserIdByLoginAsync(string login);
     }
 }

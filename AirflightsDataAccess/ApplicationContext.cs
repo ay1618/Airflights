@@ -1,5 +1,5 @@
-﻿using AirflightsDataAccess.Entities;
-using AirflightsDataAccess.Entities.Configurations;
+﻿using AirflightsDataAccess.Entities.Configurations;
+using AirflightsDomain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,7 @@
-﻿using AirflightsDomain.Models.User;
+﻿using AirflightsDomain.Models.Entities;
+using AirflightsDomain.Models.User;
 using AirflightsDomain.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -13,15 +15,18 @@ namespace AirflightsDomain.Services.Implementations
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRep;
+        private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRep)
+        public UserService(IUserRepository userRep, IMapper mapper)
         {
             this._userRep = userRep;
+            this._mapper = mapper;
         }
 
         public async Task<AuthUserDTO> GetIdentityAsync(string login, string password)
         {
-            AuthUserDTO user = await _userRep.GetAuthAsync(login);
+            User userEntity = await _userRep.GetAuthAsync(login);
+            AuthUserDTO user = _mapper.Map<AuthUserDTO>(userEntity);
             if (user is null)
                 return null;
 
@@ -38,7 +43,8 @@ namespace AirflightsDomain.Services.Implementations
         {
             PasswordHasher<CreateUserDTO> passwordHasher = new PasswordHasher<CreateUserDTO>();
             newUser.Password = passwordHasher.HashPassword(newUser, newUser.Password);
-            await _userRep.CreateAsync(newUser);
+            User user = _mapper.Map<User>(newUser);
+            await _userRep.CreateAsync(user);
         }
     }
 }

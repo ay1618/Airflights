@@ -24,7 +24,7 @@ namespace Airflights.Controllers
         [HttpGet("cities")]
         public async Task<ActionResult<List<CityDTO>>> Cities()
         {
-            return Ok(await _dictService.GetAllAsync());
+            return Ok(await _dictService.GetCitiesAsync());
         }
         
     }

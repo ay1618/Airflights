@@ -1,5 +1,5 @@
-﻿using AirflightsDataAccess.Entities;
-using AirflightsDomain.Models;
+﻿using AirflightsDomain.Models;
+using AirflightsDomain.Models.Entities;
 using AutoMapper;
 using System;
 using System.Collections.Generic;

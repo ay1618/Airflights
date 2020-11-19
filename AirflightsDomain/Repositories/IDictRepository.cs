@@ -1,4 +1,5 @@
 ﻿using AirflightsDomain.Models;
+using AirflightsDomain.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,6 @@ namespace AirflightsDomain.Repositories
 {
     public interface IDictRepository
     {
-        Task<IEnumerable<CityDTO>> GetAsync();
+        Task<List<City>> GetCitiesAsync();
     }
 }

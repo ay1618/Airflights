@@ -1,4 +1,4 @@
-﻿using AirflightsDataAccess.Entities;
+﻿using AirflightsDomain.Models.Entities;
 using AirflightsDomain.Models.Flight;
 using AutoMapper;
 using System;
