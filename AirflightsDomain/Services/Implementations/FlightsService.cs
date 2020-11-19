@@ -17,6 +17,21 @@ namespace AirflightsDomain.Services.Implementations
             this._flightsRepository = flightsRepository;
         }
 
+        public Task CreateAsync(CreateFlightDTO flight)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<FlightDTO>> GetAllAsync() => (await _flightsRepository.GetAsync()).ToList();
+
+        public Task<FlightDTO> GetAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
