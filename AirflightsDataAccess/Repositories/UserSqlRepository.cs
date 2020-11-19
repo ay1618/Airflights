@@ -30,7 +30,10 @@ namespace AirflightsDataAccess.Repositories
 
         public async Task<AuthUserDTO> GetAuthAsync(string login)
         {
-            User user = await _applicationContext.Users.Include(u => u.UserRoles).FirstOrDefaultAsync(u => u.Login == login);
+            User user = await _applicationContext.Users
+                .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => u.Login == login);
             return _mapper.Map<AuthUserDTO>(user);
         }
     }
