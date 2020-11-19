@@ -21,7 +21,6 @@ namespace Airflights.Controllers
             this._dictService = dictService;
         }
 
-        [Authorize]
         [HttpGet("cities")]
         public async Task<ActionResult<List<CityDTO>>> Cities()
         {
