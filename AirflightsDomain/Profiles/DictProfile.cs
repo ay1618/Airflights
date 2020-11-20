@@ -12,6 +12,7 @@ namespace AirflightsDataAccess.Profiles
         public DictProfile()
         {
             CreateMap<City, CityDTO>();
+            CreateMap<CityDTO, City>();
         }
     }
 }

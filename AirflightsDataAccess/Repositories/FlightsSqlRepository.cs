@@ -41,7 +41,11 @@ namespace AirflightsDataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<List<Flight>> GetAsync() => await _dbContext.Flights.ToListAsync();
+        public async Task<List<Flight>> GetAsync()
+            => await _dbContext.Flights
+                .Include(f => f.FromCity)
+                .Include(f => f.ToCity)
+                .ToListAsync();
 
         public Task<FlightDTO> GetAsync(int id)
         {
