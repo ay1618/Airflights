@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -52,7 +53,52 @@ namespace AirflightsDataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(UpdateFlightDTO flight)
+        public async Task<List<Flight>> GetAsync(FlightFilterRequestDTO filter)
+        {
+            IQueryable<Flight> flights = _dbContext.Flights;
+
+
+            if (filter.From != null)
+            {
+                flights = flights.Where(f => f.FromCityId == filter.From);
+            }
+
+            if (filter.To != null)
+            {
+                flights = flights.Where(f => f.ToCityId == filter.To);
+            }
+
+            if (filter.DepartureTimeFrom != null && filter.DepartureTimeFrom != DateTime.MinValue)
+            {
+                flights = flights
+                   .Where(f => f.DepartureTime >= filter.DepartureTimeFrom);
+            }
+
+            if (filter.DepartureTimeUntil != null && filter.DepartureTimeUntil != DateTime.MaxValue)
+            {
+                flights = flights
+                   .Where(f => f.DepartureTime <= filter.DepartureTimeUntil);
+            }
+
+            //if (filter.ArrivalTimeFrom != DateTime.MinValue)
+            //{
+            //    flights = flights
+            //       .Where(f => f.ArrivalTime >= filter.ArrivalTimeFrom);
+            //}
+
+            //if (filter.ArrivalTimeUntil != DateTime.MaxValue)
+            //{
+            //    flights = flights
+            //       .Where(f => f.ArrivalTime <= filter.ArrivalTimeUntil);
+            //}
+
+            return await flights
+                .Include(f => f.FromCity)
+                .Include(f => f.ToCity)
+                .ToListAsync();
+        }
+
+        public Task UpdateAsync(Flight flight)
         {
             throw new NotImplementedException();
         }

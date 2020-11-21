@@ -15,6 +15,7 @@ namespace AirflightsDomain.Repositories
         /// </summary>
         /// <returns></returns>
         Task<List<Flight>> GetAsync();
+        Task<List<Flight>> GetAsync(FlightFilterRequestDTO filter);
 
         /// <summary>
         /// вытащить по id
@@ -30,7 +31,7 @@ namespace AirflightsDomain.Repositories
         /// <returns></returns>
         Task CreateAsync(Flight flight);
 
-        Task UpdateAsync(UpdateFlightDTO flight);
+        Task UpdateAsync(Flight flight);
 
         Task DeleteAsync(int flightId);
 

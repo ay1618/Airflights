@@ -1,6 +1,7 @@
 ﻿using AirflightsDomain.Models;
 using AirflightsDomain.Models.Flight;
 using AirflightsDomain.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -35,9 +36,20 @@ namespace Airflights.Controllers
         /// <returns></returns>
         // GET: api/<FlightsController>
         [HttpGet]
-        public async Task<List<FlightDTO>> Get()
+        public async Task<ActionResult<List<FlightDTO>>> Get()
         {
-            return await _flightService.GetAllAsync();
+            return Ok(await _flightService.GetAllAsync());
+        }
+
+        /// <summary>
+        /// получить рейсы по фильтру
+        /// </summary>
+        /// <returns></returns>
+        // GET: api/<FlightsController>
+        [HttpGet("filter")]
+        public async Task<ActionResult<List<FlightDTO>>> GetFiltered([FromQuery] FlightFilterRequestDTO filterData)
+        {
+            return Ok(await _flightService.GetFiltered(filterData));
         }
 
         /// <summary>
@@ -49,7 +61,7 @@ namespace Airflights.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<FlightDTO>> Get(int id)
         {
-            return await _flightService.GetAsync(id);
+            return Ok(await _flightService.GetAsync(id));
         }
 
         // POST api/<FlightsController>
@@ -60,6 +72,7 @@ namespace Airflights.Controllers
         }
 
         // PUT api/<FlightsController>
+        [Authorize(Roles = "ADM")]
         [HttpPut]
         public async Task<ActionResult> Put([FromBody] CreateFlightDTO flight)
         {

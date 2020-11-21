@@ -28,6 +28,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Airflights.Controllers.FlightsController.GetFiltered(AirflightsDomain.Models.Flight.FlightFilterRequestDTO)">
+            <summary>
+            получить рейсы по фильтру
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Airflights.Controllers.FlightsController.Get(System.Int32)">
             <summary>
             получить рейс по id
