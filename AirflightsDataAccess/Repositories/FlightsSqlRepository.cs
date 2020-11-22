@@ -95,12 +95,21 @@ namespace AirflightsDataAccess.Repositories
             return await flights
                 .Include(f => f.FromCity)
                 .Include(f => f.ToCity)
+                .AsNoTracking()
                 .ToListAsync();
         }
 
-        public Task UpdateAsync(Flight flight)
+        public async Task UpdateAsync(Flight flight)
         {
-            throw new NotImplementedException();
+            _dbContext.Flights.Update(flight);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateDelayAsync(UpdateFlightDelayDTO flightDelay)
+        {
+            Flight flight = await _dbContext.Flights.FirstOrDefaultAsync(f => f.Id == flightDelay.Id);
+            flight.Delay = flightDelay.Delay;
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
