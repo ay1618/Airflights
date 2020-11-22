@@ -64,13 +64,11 @@ namespace Airflights.Controllers
             return Ok(await _flightService.GetAsync(id));
         }
 
-        // POST api/<FlightsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-
-        }
-
+        /// <summary>
+        /// создание
+        /// </summary>
+        /// <param name="flight"></param>
+        /// <returns></returns>
         // PUT api/<FlightsController>
         [Authorize(Roles = "ADM")]
         [HttpPut]
@@ -80,6 +78,38 @@ namespace Airflights.Controllers
             return Ok();
         }
 
+
+        /// <summary>
+        /// редактирование
+        /// </summary>
+        /// <param name="flight"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "ADM")]
+        [HttpPatch]
+        public async Task<ActionResult> Patch([FromBody] UpdateFlightDTO flight)
+        {
+            await _flightService.UpdateAsync(flight);
+            return Ok();
+        }
+
+        /// <summary>
+        /// редактировать задержку 
+        /// </summary>
+        /// <param name="flight"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "ADM, MOD")]
+        [HttpPatch("delayEdit")]
+        public async Task<ActionResult> PatchDelay([FromBody] UpdateFlightDelayDTO delayFlight)
+        {
+            await _flightService.UpdateDelayAsync(delayFlight);
+            return Ok();
+        }
+
+        /// <summary>
+        /// удаление
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE api/<FlightsController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
