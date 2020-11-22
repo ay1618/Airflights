@@ -10,7 +10,7 @@ namespace AirflightsDomain.Models.Flight
         public DateTime ArrivalTime { get; set; }
         public DateTime DepartureTime { get; set; }
         public long Delay { get; set; }
-        public bool IsArchive { get; set; }
+        //public bool IsArchive { get; set; }
 
         public int FromCityId { get; set; }
 
