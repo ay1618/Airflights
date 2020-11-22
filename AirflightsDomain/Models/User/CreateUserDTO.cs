@@ -9,6 +9,5 @@ namespace AirflightsDomain.Models.User
         public String Login { get; set; }
         public String Name { get; set; }
         public String Password { get; set; }
-        public String Role { get; set; }
     }
 }
