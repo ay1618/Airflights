@@ -32,6 +32,7 @@ namespace AirflightsDomain.Repositories
         Task CreateAsync(Flight flight);
 
         Task UpdateAsync(Flight flight);
+        Task UpdateDelayAsync(UpdateFlightDelayDTO flight);
 
         Task DeleteAsync(int flightId);
 

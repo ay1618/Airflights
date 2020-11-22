@@ -13,5 +13,7 @@ namespace AirflightsDomain.Services
         Task<FlightDTO> GetAsync(int id);
         Task DeleteAsync(int id);
         Task CreateAsync(CreateFlightDTO flight);
+        Task UpdateAsync(UpdateFlightDTO flight);
+        Task UpdateDelayAsync(UpdateFlightDelayDTO flight);
     }
 }

@@ -54,5 +54,16 @@ namespace AirflightsDomain.Services.Implementations
             List<Flight> flightsFromDb = await _flightsRepository.GetAsync(filter);
             return _mapper.Map<List<FlightDTO>>(flightsFromDb);
         }
+
+        public async Task UpdateAsync(UpdateFlightDTO flight)
+        {
+            Flight flightEntity = _mapper.Map<Flight>(flight);
+            await _flightsRepository.UpdateAsync(flightEntity);
+        }
+
+        public async Task UpdateDelayAsync(UpdateFlightDelayDTO flight)
+        {
+            await _flightsRepository.UpdateDelayAsync(flight);
+        }
     }
 }
