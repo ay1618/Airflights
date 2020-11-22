@@ -52,15 +52,11 @@ namespace Airflights
                 options.SuppressModelStateInvalidFilter = true;
             });
 
-            services.AddTransient<IValidator<CreateFlightDTO>, CreateFlightValidator>();
-
             services.AddDataAccessContext(Configuration["Db:ConnectionString"]);
-            services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.FlightProfile));
-            services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.DictProfile));
-            services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.UserProfile));
 
-            //add injections from Domain 
-            services.AddDomainInjections();
+
+             //add injections from Domain 
+             services.AddDomainInjections();
 
             //add injection from DataAccess
             services.AddDataAccessInjections();

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AirflightsDataAccess.Profiles
+namespace AirflightsDomain.Profiles
 {
     public class FlightProfile: Profile
     {
