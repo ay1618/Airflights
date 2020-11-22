@@ -41,6 +41,34 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Airflights.Controllers.FlightsController.Put(AirflightsDomain.Models.Flight.CreateFlightDTO)">
+            <summary>
+            создание
+            </summary>
+            <param name="flight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Airflights.Controllers.FlightsController.Patch(AirflightsDomain.Models.Flight.UpdateFlightDTO)">
+            <summary>
+            редактирование
+            </summary>
+            <param name="flight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Airflights.Controllers.FlightsController.PatchDelay(AirflightsDomain.Models.Flight.UpdateFlightDelayDTO)">
+            <summary>
+            редактировать задержку 
+            </summary>
+            <param name="flight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Airflights.Controllers.FlightsController.Delete(System.Int32)">
+            <summary>
+            удаление
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Airflights.Controllers.UsersController.#ctor(AirflightsDomain.Services.IUserService)">
             <summary>
             конструктор - точка входа внедрения сервисов
@@ -53,6 +81,18 @@
             </summary>
             <param name="user"></param>
             <returns></returns>
+        </member>
+        <member name="T:Airflights.Middlewares.RequestResponseLoggerMiddleware">
+            <summary>
+            middlware для логирования 
+            </summary>
+        </member>
+        <member name="M:Airflights.Middlewares.RequestResponseLoggerMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="next"></param>
+            <param name="loggerFactory"></param>
         </member>
     </members>
 </doc>

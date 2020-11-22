@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Airflights.Middlewares;
 using AirflightsDataAccess;
 using AirflightsDataAccess.ExtensionMethods;
 using AirflightsDataAccess.Repositories;
@@ -99,6 +100,9 @@ namespace Airflights
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<RequestResponseLoggerMiddleware>();
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             app.UseHttpsRedirection();
 
