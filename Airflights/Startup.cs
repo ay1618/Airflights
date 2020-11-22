@@ -4,14 +4,18 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Airflights.Attributes;
 using Airflights.Middlewares;
 using AirflightsDataAccess;
 using AirflightsDataAccess.ExtensionMethods;
 using AirflightsDataAccess.Repositories;
 using AirflightsDomain;
+using AirflightsDomain.Models.Flight;
 using AirflightsDomain.Services;
 using AirflightsDomain.Services.Implementations;
 using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +42,17 @@ namespace Airflights
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(opt => 
+            {
+                opt.Filters.Add(typeof(ValidatorActionFilter));
+            }).AddFluentValidation();
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+            services.AddTransient<IValidator<CreateFlightDTO>, CreateFlightValidator>();
 
             services.AddDataAccessContext(Configuration["Db:ConnectionString"]);
             services.AddAutoMapper(typeof(AirflightsDataAccess.Profiles.FlightProfile));
@@ -72,6 +86,15 @@ namespace Airflights
                 var xmlPath = Path.Combine(basePath, "Airflights.xml");
                 options.IncludeXmlComments(xmlPath);
             });
+
+            //services.AddMvc(opt =>
+            //{
+            //    opt.Filters.Add(typeof(ValidatorActionFilter));
+            //})
+            //.AddFluentValidation(fvc =>
+            //    fvc.RegisterValidatorsFromAssemblyContaining<Startup>()
+            // );
+
 
             var key = Encoding.ASCII.GetBytes(Configuration["authSettings:Secret"]);
             services.AddAuthentication(x =>
