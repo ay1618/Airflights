@@ -14,3 +14,6 @@
   ```admin:12345```
   
   ```moderator:moder```
+  
+  ### Фронт на vuejs
+  https://github.com/ay1618/airflights-frontend
