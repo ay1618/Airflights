@@ -17,5 +17,3 @@
   
   ### Фронт на vuejs
   https://github.com/ay1618/airflights-frontend
-
-  ###test
