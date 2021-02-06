@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "7ec692fc-21e8-4da9-ba74-dac10c6808ad",
+		"name": "airflights",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "/api/Auth/authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"login\": \"admin\",\r\n  \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/Auth/authenticate",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"Auth",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "/api/flights",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/flights",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/dict/cities",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6IkFETSIsIm5iZiI6MTYxMjYwMDEzOCwiZXhwIjoxNjEzMjA0OTM4LCJpYXQiOjE2MTI2MDAxMzh9.Ne1GpDPCwPTRPUHcXHzg4mUY6DiuAyI2KOuo7_DE9Zw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/dict/cities",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"dict",
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/flights/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/Flights/1",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"Flights",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mutations",
+			"item": [
+				{
+					"name": "/api/flights",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6IkFETSIsIm5iZiI6MTYxMjU0MTk1NywiZXhwIjoxNjEzMTQ2NzU3LCJpYXQiOjE2MTI1NDE5NTd9.LJRpyaXwyZfGpwNdhHhfih3oAG5RbB6TWZCLoaU4H6g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"arrivalTime\": \"2021-02-12T15:28:52.885Z\",\r\n  \"departureTime\": \"2021-02-11T13:28:52.885Z\",\r\n  \"fromCityId\": 3,\r\n  \"toCityId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/flights",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/flights",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6IkFETSIsIm5iZiI6MTYxMjYwMTEyMCwiZXhwIjoxNjEzMjA1OTIwLCJpYXQiOjE2MTI2MDExMjB9.tJiZiVcM217NYxgrmmxVI77BDN9Ce9mzIqMsVJrKOVc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"arrivalTime\": \"2020-11-19T15:28:52.885\",\r\n    \"departureTime\": \"2020-11-19T13:28:52.885\",\r\n    \"delay\": 10,\r\n    \"fromCityId\": 1,\r\n    \"toCityId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/flights",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/flights",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6IkFETSIsIm5iZiI6MTYxMjYwMTEyMCwiZXhwIjoxNjEzMjA1OTIwLCJpYXQiOjE2MTI2MDExMjB9.tJiZiVcM217NYxgrmmxVI77BDN9Ce9mzIqMsVJrKOVc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/flights/1",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"flights",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Flights/delayEdit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6IkFETSIsIm5iZiI6MTYxMjYwMTEyMCwiZXhwIjoxNjEzMjA1OTIwLCJpYXQiOjE2MTI2MDExMjB9.tJiZiVcM217NYxgrmmxVI77BDN9Ce9mzIqMsVJrKOVc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"delay\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/Flights/delayEdit",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"Flights",
+								"delayEdit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6IkFETSIsIm5iZiI6MTYxMjYwMTEyMCwiZXhwIjoxNjEzMjA1OTIwLCJpYXQiOjE2MTI2MDExMjB9.tJiZiVcM217NYxgrmmxVI77BDN9Ce9mzIqMsVJrKOVc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"login\": \"newUser\",\r\n  \"name\": \"newUser1\",\r\n  \"password\": \"TopSecret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/Users",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"Users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Host",
+			"value": "http://localhost:8000"
+		}
+	]
+}
