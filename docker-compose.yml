@@ -18,12 +18,12 @@ services:
         environment:
             SA_PASSWORD: "Your_password123"
             ACCEPT_EULA: "Y"
-    # web-ui:
-    #     build: ./webclient/
-    #     ports: 
-    #         - 4200:80
-    #     links:
-    #         - web
+    web-ui:
+        build: ./webclient/
+        ports: 
+            - 4200:80
+        links:
+            - web
 
 
 volumes:
