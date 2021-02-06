@@ -20,6 +20,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirflightsDataAccess", "Air
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirflightsShared", "AirflightsShared\AirflightsShared.csproj", "{ADF27A8A-02E7-4F58-8511-F42D3229D20C}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "webclient", "webclient\", "{17584545-0436-408E-8A39-BC894283D2A0}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_63801"
+		Debug.AspNetCompiler.PhysicalPath = "webclient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63801\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_63801"
+		Release.AspNetCompiler.PhysicalPath = "webclient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63801\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "63801"
+		SlnRelativePath = "webclient\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,9 +63,16 @@ Global
 		{ADF27A8A-02E7-4F58-8511-F42D3229D20C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADF27A8A-02E7-4F58-8511-F42D3229D20C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADF27A8A-02E7-4F58-8511-F42D3229D20C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17584545-0436-408E-8A39-BC894283D2A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17584545-0436-408E-8A39-BC894283D2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17584545-0436-408E-8A39-BC894283D2A0}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{17584545-0436-408E-8A39-BC894283D2A0}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17584545-0436-408E-8A39-BC894283D2A0} = {29A7456A-3044-4D05-A31B-EB6B95682DFA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B6D15C0-2D83-44A5-85C7-7876EED8270B}
