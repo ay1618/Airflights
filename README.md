@@ -4,7 +4,7 @@
 2. Vue frontend ui app "vue": "^2.6.11"
 
   ### Запуск настроен через docker compose
-      ```docker-compose up -d```
+  ```docker-compose up -d```
   
   ### Запуск приложения настроен на 
       http://localhost:4200 - webUI, 
