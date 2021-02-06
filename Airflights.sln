@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airflights", "Airflights\Ai
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{29A7456A-3044-4D05-A31B-EB6B95682DFA}"
 	ProjectSection(SolutionItems) = preProject
+		Dockerfile.txt = Dockerfile.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -14,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirflightsDomain", "Airflig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirflightsDataAccess", "AirflightsDataAccess\AirflightsDataAccess.csproj", "{E5B4AEC8-23CD-4539-8C92-C9433CB2D8CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirflightsShared", "AirflightsShared\AirflightsShared.csproj", "{ADF27A8A-02E7-4F58-8511-F42D3229D20C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirflightsShared", "AirflightsShared\AirflightsShared.csproj", "{ADF27A8A-02E7-4F58-8511-F42D3229D20C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

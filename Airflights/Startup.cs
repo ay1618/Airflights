@@ -52,7 +52,7 @@ namespace Airflights
                 options.SuppressModelStateInvalidFilter = true;
             });
 
-            services.AddDataAccessContext(Configuration["Db:ConnectionString"]);
+            services.AddDataAccessContext(Configuration["Db:ConnectionStringDocker"]);
 
 
              //add injections from Domain 
@@ -78,9 +78,9 @@ namespace Airflights
                     }
                 });
 
-                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
-                var xmlPath = Path.Combine(basePath, "Airflights.xml");
-                options.IncludeXmlComments(xmlPath);
+                //var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                //var xmlPath = Path.Combine(basePath, "Airflights.xml");
+                //options.IncludeXmlComments(xmlPath);
             });
 
             //services.AddMvc(opt =>

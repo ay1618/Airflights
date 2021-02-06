@@ -19,7 +19,8 @@ namespace AirflightsDataAccess.Entities.Configurations
                 new City[] {
                     new City { Id = 1, Name = "Алматы", Code = "ALA"},
                     new City { Id = 2, Name = "Астана", Code = "AST"},
-                    new City { Id = 3, Name = "Токио", Code = "ТОК"}
+                    new City { Id = 3, Name = "Токио", Code = "ТОК"},
+                    new City { Id = 4, Name = "Сеул", Code = "SEU"}
                 });
         }
     }
