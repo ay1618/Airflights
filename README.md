@@ -1,13 +1,15 @@
 # Airflights - тестовое задание для Air Astana
 
 1. ASP.NET Core WepAPI (.NET Core 3.1)
+2. Vue frontend ui app
 
-  ### Запуск приложения настроен на localhost:5000
+  ### Запуск приложения настроен на 
+      http://localhost:4200 - webUI, 
+      http://localhost:8000 - WebAPI (доступен /swagger),
+      tcp:localhost:1433 - sqlserver [sa:Your_password123]
 
-  ### DB connection string выставлен в appsetting.json значение 
-  ```Server=(localdb)\\mssqllocaldb;Database=airflights;Trusted_Connection=True;```
-
-  *Необходимо задать свой*
+  ### Запуск настроен через docker compose
+  ```docker-compose up -d```
   
   ### Для демонстрации тестового задания при запуске по умолчанию будут доступны два юзера с ролями админа и модератора
   
@@ -15,5 +17,3 @@
   
   ```moderator:moder```
   
-  ### Фронт на vuejs
-  https://github.com/ay1618/airflights-frontend
