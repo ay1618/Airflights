@@ -1,7 +1,7 @@
 # Airflights - тестовое задание для Air Astana
 
 1. ASP.NET Core WepAPI (.NET Core 3.1)
-2. Vue frontend ui app
+2. Vue frontend ui app "vue": "^2.6.11"
 
   ### Запуск приложения настроен на 
       http://localhost:4200 - webUI, 
